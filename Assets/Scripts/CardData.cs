@@ -14,6 +14,7 @@ public class CardData : ScriptableObject
 
     public string cardTitle;
     public string description;
+
     public int cost;
     public int damage;
     public int numberInDeck;

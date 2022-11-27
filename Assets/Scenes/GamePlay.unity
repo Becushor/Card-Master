@@ -1433,6 +1433,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f987dd9efa3d07e44bbd7a9d6ba71dff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDeck:
+    cardDatas: []
+  enemyDeck:
+    cardDatas: []
+  playerHand:
+    cards:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    positions:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    animNames:
+    - 
+    - 
+    - 
+    isPlayers: 1
+  enemyHand:
+    cards:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    positions:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    animNames:
+    - 
+    - 
+    - 
+    isPlayers: 0
+  cards:
+  - {fileID: 11400000, guid: 2b7c035851c3f1641b067bcd6ea50f02, type: 2}
+  - {fileID: 11400000, guid: b6e4d13d7b3bc974bbba4bf2d43eb340, type: 2}
+  - {fileID: 11400000, guid: c37ae6de317e2e147a3114ae2b52b98d, type: 2}
+  - {fileID: 11400000, guid: f1eb20758acf4dd4e93c4269a0d86bcd, type: 2}
+  - {fileID: 11400000, guid: b3601b5620f2f5f41b76b2e79c893379, type: 2}
+  - {fileID: 11400000, guid: fcfccfc214b968e4091303162545dec6, type: 2}
+  - {fileID: 11400000, guid: 563296653e7c3ee4f9daeacce94e38e3, type: 2}
+  - {fileID: 11400000, guid: fea330bf9d165e74c88971ecea607386, type: 2}
   costNumbers:
   - {fileID: -1439962401544170818, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
   - {fileID: -7250221663623815539, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
