@@ -22,4 +22,4 @@ MonoBehaviour:
   frameImage: {fileID: 21300000, guid: 182905e97b2840948ad4f4d90aafe1da, type: 3}
   isDefenseCard: 0
   isMirrorCard: 0
-  isMultiCard: 0
+  isMultiCard: 1

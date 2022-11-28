@@ -2137,7 +2137,7 @@ MonoBehaviour:
   glowImage: {fileID: 966222441}
   health: 5
   mana: 1
-  isPlayer: 1
+  isPlayer: 0
   isFire: 0
   manaBalls:
   - {fileID: 2031577470}
@@ -2774,7 +2774,7 @@ MonoBehaviour:
   healthImage: {fileID: 1350720535}
   glowImage: {fileID: 1366966925}
   health: 5
-  mana: 1
+  mana: 3
   isPlayer: 1
   isFire: 0
   manaBalls:
@@ -2938,6 +2938,8 @@ MonoBehaviour:
     - CardDeal5
     - CardDeal4
     isPlayers: 0
+  player: {fileID: 1330095838}
+  enemy: {fileID: 954726894}
   costNumbers:
   - {fileID: -1439962401544170818, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
   - {fileID: -7250221663623815539, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
@@ -2960,6 +2962,13 @@ MonoBehaviour:
   - {fileID: -519400735672398794, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
   - {fileID: -1344653293438560547, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
   - {fileID: 849386610096671516, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
+  fireBallImage: {fileID: 21300000, guid: 9965bad6e276a174a89fd7cf791576a2, type: 3}
+  iceBallImage: {fileID: 21300000, guid: f99772bf2aeab4c47a2ddad4c12c726d, type: 3}
+  multiFireBallImage: {fileID: 21300000, guid: 1ad495760d7a5f64293040abe6c437c7, type: 3}
+  multiIceBallImage: {fileID: 21300000, guid: f32cdf8741842dc47a9e084c825ade5f, type: 3}
+  fireAndIceBallImage: {fileID: 21300000, guid: 6a21adb719b6a794cbbb5ba25f752de0, type: 3}
+  effectFromLeftPrefab: {fileID: 1255125187484105215, guid: 6add7ab00465238468a64fc1df7e12e3, type: 3}
+  effectFromRightPrefab: {fileID: 3382598720219011317, guid: 21275fb1641fb1f488579b5b5140a6db, type: 3}
   cards:
   - {fileID: 11400000, guid: 2b7c035851c3f1641b067bcd6ea50f02, type: 2}
   - {fileID: 11400000, guid: b6e4d13d7b3bc974bbba4bf2d43eb340, type: 2}
@@ -2971,6 +2980,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fea330bf9d165e74c88971ecea607386, type: 2}
   cardPrefab: {fileID: 8392861686946643298, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
   canvas: {fileID: 15311824}
+  isPlayable: 0
 --- !u!4 &1360260818
 Transform:
   m_ObjectHideFlags: 0
