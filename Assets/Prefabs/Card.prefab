@@ -102,7 +102,7 @@ RectTransform:
   m_GameObject: {fileID: 8392861686615860117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.22790259, y: 0.22790259, z: 0.22790259}
+  m_LocalScale: {x: 0.17, y: 0.17, z: 0.17}
   m_Children: []
   m_Father: {fileID: 8392861687168620692}
   m_RootOrder: 5
@@ -110,7 +110,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -83}
-  m_SizeDelta: {x: 666, y: 342}
+  m_SizeDelta: {x: 820, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8392861686615860118
 CanvasRenderer:
@@ -142,22 +142,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 60
-    m_FontStyle: 0
+    m_FontSize: 100
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 6
-    m_MaxSize: 60
+    m_MaxSize: 100
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Fires a shard of ice.
-
-    Cost: 5
-
-    Damage: 5'
+  m_Text: Fires a shard of ice.
 --- !u!1 &8392861686650819266
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,10 +492,10 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 60
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 6
-    m_MaxSize: 60
+    m_MinSize: 0
+    m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

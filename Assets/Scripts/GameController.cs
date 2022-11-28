@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
         playerDeck.Create();
         enemyDeck.Create();
 
-        DealHands();
+        StartCoroutine(DealHands());
     }
 
     public void Quit()
@@ -42,14 +42,14 @@ public class GameController : MonoBehaviour
         //implement method
     }
 
-    internal void DealHands()
+    internal IEnumerator DealHands()
     {
-        //yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1);
         for (int i = 0; i < 3; i++)
         {
             playerDeck.DealCard(playerHand);
             enemyDeck.DealCard(enemyHand);
-            //yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1);
         }
     }
 }

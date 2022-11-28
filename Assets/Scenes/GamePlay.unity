@@ -2917,9 +2917,9 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     positions:
-    - {fileID: 1442994162}
-    - {fileID: 1161117580}
     - {fileID: 1917402676}
+    - {fileID: 1161117580}
+    - {fileID: 1442994162}
     animNames:
     - CardDeal6
     - CardDeal5
@@ -3840,6 +3840,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 15311825}
     m_Modifications:
+    - target: {fileID: 8392861686509680029, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392861686615860119, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392861686615860119, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392861686615860119, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8392861686946643229, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
