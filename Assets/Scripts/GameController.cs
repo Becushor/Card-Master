@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
 
     public Canvas canvas = null;
 
+    public bool isPlayable = false;
+
     private void Awake()
     {
         instance = this;
@@ -51,5 +53,6 @@ public class GameController : MonoBehaviour
             enemyDeck.DealCard(enemyHand);
             yield return new WaitForSeconds(1);
         }
+        isPlayable = true;
     }
 }
