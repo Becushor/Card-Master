@@ -13,10 +13,14 @@ public class GameController : MonoBehaviour
     public Hand playerHand = new Hand();
     public Hand enemyHand  = new Hand();
 
-    public List<CardData> cards = new List<CardData>();
-
     public Sprite[] costNumbers   = new Sprite[10];
     public Sprite[] damageNumbers = new Sprite[10];
+
+    public List<CardData> cards = new List<CardData>();
+
+    public GameObject cardPrefab = null;
+
+    public Canvas canvas = null;
 
     private void Awake()
     {
@@ -24,6 +28,8 @@ public class GameController : MonoBehaviour
 
         playerDeck.Create();
         enemyDeck.Create();
+
+        DealHands();
     }
 
     public void Quit()
@@ -34,5 +40,16 @@ public class GameController : MonoBehaviour
     public void SkipTurn()
     {
         //implement method
+    }
+
+    internal void DealHands()
+    {
+        //yield return new WaitForSeconds(1);
+        for (int i = 0; i < 3; i++)
+        {
+            playerDeck.DealCard(playerHand);
+            enemyDeck.DealCard(enemyHand);
+            //yield return new WaitForSeconds(1);
+        }
     }
 }

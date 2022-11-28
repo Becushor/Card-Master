@@ -2903,13 +2903,13 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     positions:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 910069189}
+    - {fileID: 661129142}
+    - {fileID: 529866314}
     animNames:
-    - 
-    - 
-    - 
+    - CardDeal1
+    - CardDeal2
+    - CardDeal3
     isPlayers: 1
   enemyHand:
     cards:
@@ -2917,23 +2917,14 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     positions:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 1442994162}
+    - {fileID: 1161117580}
+    - {fileID: 1917402676}
     animNames:
-    - 
-    - 
-    - 
+    - CardDeal6
+    - CardDeal5
+    - CardDeal4
     isPlayers: 0
-  cards:
-  - {fileID: 11400000, guid: 2b7c035851c3f1641b067bcd6ea50f02, type: 2}
-  - {fileID: 11400000, guid: b6e4d13d7b3bc974bbba4bf2d43eb340, type: 2}
-  - {fileID: 11400000, guid: c37ae6de317e2e147a3114ae2b52b98d, type: 2}
-  - {fileID: 11400000, guid: f1eb20758acf4dd4e93c4269a0d86bcd, type: 2}
-  - {fileID: 11400000, guid: b3601b5620f2f5f41b76b2e79c893379, type: 2}
-  - {fileID: 11400000, guid: fcfccfc214b968e4091303162545dec6, type: 2}
-  - {fileID: 11400000, guid: 563296653e7c3ee4f9daeacce94e38e3, type: 2}
-  - {fileID: 11400000, guid: fea330bf9d165e74c88971ecea607386, type: 2}
   costNumbers:
   - {fileID: -1439962401544170818, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
   - {fileID: -7250221663623815539, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
@@ -2956,6 +2947,17 @@ MonoBehaviour:
   - {fileID: -519400735672398794, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
   - {fileID: -1344653293438560547, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
   - {fileID: 849386610096671516, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
+  cards:
+  - {fileID: 11400000, guid: 2b7c035851c3f1641b067bcd6ea50f02, type: 2}
+  - {fileID: 11400000, guid: b6e4d13d7b3bc974bbba4bf2d43eb340, type: 2}
+  - {fileID: 11400000, guid: c37ae6de317e2e147a3114ae2b52b98d, type: 2}
+  - {fileID: 11400000, guid: f1eb20758acf4dd4e93c4269a0d86bcd, type: 2}
+  - {fileID: 11400000, guid: b3601b5620f2f5f41b76b2e79c893379, type: 2}
+  - {fileID: 11400000, guid: fcfccfc214b968e4091303162545dec6, type: 2}
+  - {fileID: 11400000, guid: 563296653e7c3ee4f9daeacce94e38e3, type: 2}
+  - {fileID: 11400000, guid: fea330bf9d165e74c88971ecea607386, type: 2}
+  cardPrefab: {fileID: 8392861686946643298, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
+  canvas: {fileID: 15311824}
 --- !u!4 &1360260818
 Transform:
   m_ObjectHideFlags: 0
@@ -3925,6 +3927,10 @@ PrefabInstance:
     - target: {fileID: 8392861686946643298, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
       propertyPath: m_Name
       value: Card
+      objectReference: {fileID: 0}
+    - target: {fileID: 8392861686946643298, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
