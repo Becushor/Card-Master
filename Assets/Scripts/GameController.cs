@@ -78,6 +78,10 @@ public class GameController : MonoBehaviour
 
         CastCard(card, usingOnPlayer, fromHand);
 
+        TurnGlowImagesOff();
+
+        fromHand.BurnCard(card);
+
         return false;
     }
     
@@ -117,13 +121,21 @@ public class GameController : MonoBehaviour
     {
         if (card.cardData.isMirrorCard)
         {
-
+            usingOnPlayer.SetMirror(true);
+            isPlayable = true;
         }
         else
         {
-            if (card.cardData.isDefenseCard)
+            if (card.cardData.isDefenseCard) //Healling
             {
+                usingOnPlayer.health += card.cardData.damage;
 
+                if (usingOnPlayer.health > usingOnPlayer.maxHealth)
+                    usingOnPlayer.health = usingOnPlayer.maxHealth;
+
+                UpdateHealths();
+
+                StartCoroutine(CastHealEffect(usingOnPlayer));
             }
             else //isAttackCard
             {
@@ -131,6 +143,12 @@ public class GameController : MonoBehaviour
             }
         }
 
+    }
+
+    private IEnumerator CastHealEffect(Player usingOnPlayer)
+    {
+        yield return new WaitForSeconds(0.5f);
+        isPlayable = true;
     }
 
     internal void CastAttackEffect(Card card, Player usingOnPlayer)
@@ -168,5 +186,26 @@ public class GameController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    internal void UpdateHealths()
+    {
+        player.UpdateHealth();
+        enemy.UpdateHealth();
+
+        if (player.health <= 0)
+        {
+            //todo GameOver 
+        }
+        if (enemy.health <= 0)
+        {
+            //todo new enemy
+        }
+    }
+
+    internal void TurnGlowImagesOff()
+    {
+        player.glowImage.gameObject.SetActive(false);
+        enemy.glowImage.gameObject.SetActive(false);
     }
 }
