@@ -2136,7 +2136,7 @@ MonoBehaviour:
   mirrorImage: {fileID: 736707692}
   healthImage: {fileID: 334921410}
   glowImage: {fileID: 966222441}
-  maxHealth: 9
+  maxHealth: 5
   health: 5
   mana: 1
   isPlayer: 0
@@ -2776,7 +2776,7 @@ MonoBehaviour:
   healthImage: {fileID: 1350720535}
   glowImage: {fileID: 1366966925}
   maxHealth: 9
-  health: 3
+  health: 9
   mana: 3
   isPlayer: 1
   isFire: 0
@@ -2986,6 +2986,9 @@ MonoBehaviour:
   cardPrefab: {fileID: 8392861686946643298, guid: f5418af01c39b7f4f9c74bef5bee32cb, type: 3}
   canvas: {fileID: 15311824}
   turnText: {fileID: 1035605859}
+  scoreText: {fileID: 1466347181}
+  playerScore: 0
+  playerKills: 0
   enemySkipTurn: {fileID: 2095895572}
   isPlayable: 0
   playerTurn: 1

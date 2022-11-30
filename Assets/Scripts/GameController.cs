@@ -39,7 +39,11 @@ public class GameController : MonoBehaviour
 
     public Canvas canvas = null;
 
-    public Text turnText = null;
+    public Text turnText  = null;
+    public Text scoreText = null;
+
+    public int playerScore = 0;
+    public int playerKills = 0;
 
     public Image enemySkipTurn = null;
 
@@ -154,7 +158,11 @@ public class GameController : MonoBehaviour
             {
                 CastAttackEffect(card, usingOnPlayer);
             }
-            //todo Ad Score
+
+            if (fromHand.isPlayers)
+                playerScore += card.cardData.damage;
+
+            UpdateScore();
         }
 
         if (fromHand.isPlayers)
@@ -217,6 +225,9 @@ public class GameController : MonoBehaviour
         }
         if (enemy.health <= 0)
         {
+            playerKills++;
+            playerScore += 10;
+            UpdateScore();
             StartCoroutine(NewEnemy());
         }
     }
@@ -226,7 +237,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(1);
         enemy.gameObject.SetActive(false);
         enemyHand.ClearHand();
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         SetUpEnemy();
         enemy.gameObject.SetActive(true);
         StartCoroutine(DealHands());
@@ -235,7 +246,6 @@ public class GameController : MonoBehaviour
     private void SetUpEnemy()
     {
         enemy.mana = 0;
-        enemy.UpdateManaBalls();
         enemy.health = 5;
         enemy.UpdateHealth();
         if (UnityEngine.Random.Range(0, 2) == 1)
@@ -266,6 +276,8 @@ public class GameController : MonoBehaviour
     {
         playerTurn = !playerTurn;
 
+        bool enemyIsDead = false;
+
         if (playerTurn)
         {
             if (player.mana < 5)
@@ -273,17 +285,31 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            if (enemy.mana < 5)
-                enemy.mana++;
+            if (enemy.health > 0)
+            {
+                if (enemy.mana < 5)
+                    enemy.mana++;
+            }
+            else
+                enemyIsDead = true;
+        }
+        
+        if (enemyIsDead)
+        {
+            playerTurn = !playerTurn;
+            if (player.mana < 5)
+                player.mana++;
+        }
+        else
+        {
+            SetTurnText();
+
+            if (!playerTurn)
+                EnemyTurn();
         }
 
-        SetTurnText();
-        
         player.UpdateManaBalls();
         enemy.UpdateManaBalls();
-
-        if (!playerTurn)
-            EnemyTurn();
     }
 
     private void EnemyTurn()
@@ -335,7 +361,7 @@ public class GameController : MonoBehaviour
         else //enemy has no card to cast
         {
             enemySkipTurn.gameObject.SetActive(true);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(2);
             enemySkipTurn.gameObject.SetActive(false);
         }
     }
@@ -353,5 +379,10 @@ public class GameController : MonoBehaviour
             turnText.text = "Merlin's Turn";
         else
             turnText.text = "Enemy's Turn";
+    }
+
+    private void UpdateScore()
+    {
+        scoreText.text = "Demons Killed: " + playerKills.ToString() + "  |  Score: " + playerScore.ToString();
     }
 }
