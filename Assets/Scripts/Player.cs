@@ -60,7 +60,7 @@ public class Player : MonoBehaviour, IDropHandler
         }
         else
         {
-            Debug.LogError("Health: " + health.ToString());
+            healthImage.sprite = GameController.instance.costNumbers[0];
         }
     }
 

@@ -2776,7 +2776,7 @@ MonoBehaviour:
   healthImage: {fileID: 1350720535}
   glowImage: {fileID: 1366966925}
   maxHealth: 9
-  health: 9
+  health: 3
   mana: 3
   isPlayer: 1
   isFire: 0
@@ -2965,6 +2965,8 @@ MonoBehaviour:
   - {fileID: -519400735672398794, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
   - {fileID: -1344653293438560547, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
   - {fileID: 849386610096671516, guid: 418be336f9b9c9b48bd00ee8948576b8, type: 3}
+  fireDemon: {fileID: 21300000, guid: c6c5c665cc838ba4ca560d8f668cf09c, type: 3}
+  iceDemon: {fileID: 21300000, guid: 7c2fbea42683ccd489391310d6a64392, type: 3}
   fireBallImage: {fileID: 21300000, guid: 9965bad6e276a174a89fd7cf791576a2, type: 3}
   iceBallImage: {fileID: 21300000, guid: f99772bf2aeab4c47a2ddad4c12c726d, type: 3}
   multiFireBallImage: {fileID: 21300000, guid: 1ad495760d7a5f64293040abe6c437c7, type: 3}
@@ -3879,7 +3881,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2095895571
 RectTransform:
   m_ObjectHideFlags: 0

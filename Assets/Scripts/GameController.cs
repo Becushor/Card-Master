@@ -21,6 +21,9 @@ public class GameController : MonoBehaviour
     public Sprite[] costNumbers   = new Sprite[10];
     public Sprite[] damageNumbers = new Sprite[10];
 
+    public Sprite fireDemon = null;
+    public Sprite iceDemon  = null;
+
     public Sprite fireBallImage = null;
     public Sprite iceBallImage  = null;
     public Sprite multiFireBallImage = null;
@@ -46,6 +49,8 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        SetUpEnemy();
 
         playerDeck.Create();
         enemyDeck.Create();
@@ -208,12 +213,47 @@ public class GameController : MonoBehaviour
 
         if (player.health <= 0)
         {
-            //todo GameOver 
+            StartCoroutine(GameOver());
         }
         if (enemy.health <= 0)
         {
-            //todo new enemy
+            StartCoroutine(NewEnemy());
         }
+    }
+
+    private IEnumerator NewEnemy()
+    {
+        yield return new WaitForSeconds(1);
+        enemy.gameObject.SetActive(false);
+        enemyHand.ClearHand();
+        yield return new WaitForSeconds(2);
+        SetUpEnemy();
+        enemy.gameObject.SetActive(true);
+        StartCoroutine(DealHands());
+    }
+
+    private void SetUpEnemy()
+    {
+        enemy.mana = 0;
+        enemy.UpdateManaBalls();
+        enemy.health = 5;
+        enemy.UpdateHealth();
+        if (UnityEngine.Random.Range(0, 2) == 1)
+        {
+            enemy.isFire = false;
+            enemy.playerImage.sprite = iceDemon;
+        }
+        else
+        {
+            enemy.isFire = true;
+            enemy.playerImage.sprite = fireDemon;
+        }
+    }
+
+    private IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(2);
     }
 
     internal void TurnGlowImagesOff()
@@ -281,7 +321,6 @@ public class GameController : MonoBehaviour
         if (card)
         {
             FlipCard(card);
-
             yield return new WaitForSeconds(2);
 
             if (card.cardData.isDefenseCard)
@@ -290,17 +329,13 @@ public class GameController : MonoBehaviour
                 UseCard(card, player, enemyHand);
 
             yield return new WaitForSeconds(1);
-
             enemyDeck.DealCard(enemyHand);
-
             yield return new WaitForSeconds(1);
         }
         else //enemy has no card to cast
         {
             enemySkipTurn.gameObject.SetActive(true);
-
             yield return new WaitForSeconds(1);
-
             enemySkipTurn.gameObject.SetActive(false);
         }
     }
