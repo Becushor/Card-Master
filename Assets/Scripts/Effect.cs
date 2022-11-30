@@ -11,8 +11,10 @@ public class Effect : MonoBehaviour
 
     public void EndTrigger()
     {
+        bool bounce = false;
         if (targetPlayer.HasMirror())
         {
+            bounce = true;
             targetPlayer.SetMirror(false);
 
             if (targetPlayer.isPlayer)
@@ -39,6 +41,9 @@ public class Effect : MonoBehaviour
 
             GameController.instance.UpdateHealths();
             //todo check for death
+
+            if (!bounce)
+                GameController.instance.NextPlayerTurn();
 
             GameController.instance.isPlayable = true;
         }

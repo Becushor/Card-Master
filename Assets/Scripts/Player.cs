@@ -26,6 +26,7 @@ public class Player : MonoBehaviour, IDropHandler
     {
         animator = GetComponent<Animator>();
         UpdateHealth();
+        UpdateManaBalls();
     }
 
     internal void PlayHitAnim()
@@ -71,5 +72,16 @@ public class Player : MonoBehaviour, IDropHandler
     internal bool HasMirror()
     {
         return mirrorImage.gameObject.activeInHierarchy;
+    }
+
+    internal void UpdateManaBalls()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            if (mana > i)
+                manaBalls[i].SetActive(true);
+            else
+                manaBalls[i].SetActive(false);
+        }
     }
 }

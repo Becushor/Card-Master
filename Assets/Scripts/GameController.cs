@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -35,7 +36,12 @@ public class GameController : MonoBehaviour
 
     public Canvas canvas = null;
 
+    public Text turnText = null;
+
+    public Image enemySkipTurn = null;
+
     public bool isPlayable = false;
+    public bool playerTurn = true;
 
     private void Awake()
     {
@@ -54,7 +60,8 @@ public class GameController : MonoBehaviour
 
     public void SkipTurn()
     {
-        //implement method
+        if (playerTurn && isPlayable)
+            NextPlayerTurn();
     }
 
     internal IEnumerator DealHands()
@@ -122,6 +129,7 @@ public class GameController : MonoBehaviour
         if (card.cardData.isMirrorCard)
         {
             usingOnPlayer.SetMirror(true);
+            NextPlayerTurn();
             isPlayable = true;
         }
         else
@@ -134,21 +142,26 @@ public class GameController : MonoBehaviour
                     usingOnPlayer.health = usingOnPlayer.maxHealth;
 
                 UpdateHealths();
-
-                StartCoroutine(CastHealEffect(usingOnPlayer));
+                NextPlayerTurn();
+                isPlayable = true;
             }
             else //isAttackCard
             {
                 CastAttackEffect(card, usingOnPlayer);
             }
+            //todo Ad Score
         }
 
-    }
-
-    private IEnumerator CastHealEffect(Player usingOnPlayer)
-    {
-        yield return new WaitForSeconds(0.5f);
-        isPlayable = true;
+        if (fromHand.isPlayers)
+        {
+            GameController.instance.player.mana -= card.cardData.cost;
+            GameController.instance.player.UpdateManaBalls();
+        }
+        else
+        {
+            GameController.instance.enemy.mana -= card.cardData.cost;
+            GameController.instance.enemy.UpdateManaBalls();
+        }
     }
 
     internal void CastAttackEffect(Card card, Player usingOnPlayer)
@@ -207,5 +220,103 @@ public class GameController : MonoBehaviour
     {
         player.glowImage.gameObject.SetActive(false);
         enemy.glowImage.gameObject.SetActive(false);
+    }
+
+    internal void NextPlayerTurn()
+    {
+        playerTurn = !playerTurn;
+
+        if (playerTurn)
+        {
+            if (player.mana < 5)
+                player.mana++;
+        }
+        else
+        {
+            if (enemy.mana < 5)
+                enemy.mana++;
+        }
+
+        SetTurnText();
+        
+        player.UpdateManaBalls();
+        enemy.UpdateManaBalls();
+
+        if (!playerTurn)
+            EnemyTurn();
+    }
+
+    private void EnemyTurn()
+    {
+        Card card = AIChooseCard();
+        StartCoroutine(EnemyCastCard(card));
+    }
+
+    private Card AIChooseCard()
+    {
+        List<Card> availableCards = new List<Card>();
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (IsCardValid(enemyHand.cards[i], enemy, enemyHand))
+                availableCards.Add(enemyHand.cards[i]);
+            else if (IsCardValid(enemyHand.cards[i], player, enemyHand))
+                availableCards.Add(enemyHand.cards[i]);
+        }
+
+        if (availableCards.Count == 0) //none available
+        {
+            NextPlayerTurn();
+            return null;
+        }
+
+        int choice = UnityEngine.Random.Range(0, availableCards.Count);
+        return availableCards[choice];
+    }
+
+    private IEnumerator EnemyCastCard(Card card)
+    {
+        yield return new WaitForSeconds(1);
+
+        if (card)
+        {
+            FlipCard(card);
+
+            yield return new WaitForSeconds(2);
+
+            if (card.cardData.isDefenseCard)
+                UseCard(card, enemy, enemyHand);
+            else
+                UseCard(card, player, enemyHand);
+
+            yield return new WaitForSeconds(1);
+
+            enemyDeck.DealCard(enemyHand);
+
+            yield return new WaitForSeconds(1);
+        }
+        else //enemy has no card to cast
+        {
+            enemySkipTurn.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(1);
+
+            enemySkipTurn.gameObject.SetActive(false);
+        }
+    }
+
+    internal void FlipCard(Card card)
+    {
+        Animator animator = card.GetComponentInChildren<Animator>();
+
+        animator.SetTrigger("Flip");
+    }
+
+    internal void SetTurnText()
+    {
+        if (playerTurn)
+            turnText.text = "Merlin's Turn";
+        else
+            turnText.text = "Enemy's Turn";
     }
 }
