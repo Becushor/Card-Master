@@ -47,6 +47,9 @@ public class GameController : MonoBehaviour
 
     public Image enemySkipTurn = null;
 
+    public AudioSource playerDieAudio = null;
+    public AudioSource enemyDieAudio  = null;
+
     public bool isPlayable = false;
     public bool playerTurn = true;
 
@@ -138,6 +141,7 @@ public class GameController : MonoBehaviour
         if (card.cardData.isMirrorCard)
         {
             usingOnPlayer.SetMirror(true);
+            usingOnPlayer.PlayMirrorSound();
             NextPlayerTurn();
             isPlayable = true;
         }
@@ -146,6 +150,7 @@ public class GameController : MonoBehaviour
             if (card.cardData.isDefenseCard) //Healling
             {
                 usingOnPlayer.health += card.cardData.damage;
+                usingOnPlayer.PlayHealSound();
 
                 if (usingOnPlayer.health > usingOnPlayer.maxHealth)
                     usingOnPlayer.health = usingOnPlayer.maxHealth;
@@ -200,16 +205,20 @@ public class GameController : MonoBehaviour
                         effect.effectImage.sprite = multiFireBallImage;
                     else
                         effect.effectImage.sprite = fireBallImage;
-                break;
+                    effect.PlayFireSound();
+                    break;
                 case CardData.DamageType.Ice:
                     if (card.cardData.isMultiCard)
                         effect.effectImage.sprite = multiIceBallImage;
                     else
                         effect.effectImage.sprite = iceBallImage;
-                break;
+                    effect.PlayIceSound();
+                    break;
                 case CardData.DamageType.Both:
                     effect.effectImage.sprite = fireAndIceBallImage;
-                break;
+                    effect.PlayFireSound();
+                    effect.PlayIceSound();
+                    break;
             }
         }
     }
@@ -384,5 +393,15 @@ public class GameController : MonoBehaviour
     private void UpdateScore()
     {
         scoreText.text = "Demons Killed: " + playerKills.ToString() + "  |  Score: " + playerScore.ToString();
+    }
+
+    internal void PlayPlayerDieSound()
+    {
+        playerDieAudio.Play();
+    }
+
+    internal void PlayEnemyDieSound()
+    {
+        enemyDieAudio.Play();
     }
 }

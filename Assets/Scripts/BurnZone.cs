@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class BurnZone : MonoBehaviour, IDropHandler
 {
+    public AudioSource burnAudio = null;
+
     public void OnDrop(PointerEventData eventData)
     {
         if (!GameController.instance.isPlayable)
@@ -15,8 +17,14 @@ public class BurnZone : MonoBehaviour, IDropHandler
 
         if (card != null)
         {
+            PlayBurnSound();
             GameController.instance.playerHand.BurnCard(card);
             GameController.instance.NextPlayerTurn();
         }
+    }
+
+    internal void PlayBurnSound()
+    {
+        burnAudio.Play();
     }
 }

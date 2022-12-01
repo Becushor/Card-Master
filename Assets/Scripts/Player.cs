@@ -9,7 +9,12 @@ public class Player : MonoBehaviour, IDropHandler
     public Image playerImage = null;
     public Image mirrorImage = null;
     public Image healthImage = null;
-    public Image glowImage = null;
+    public Image glowImage   = null;
+
+    public AudioSource dealAudio   = null;
+    public AudioSource healAudio   = null;
+    public AudioSource mirrorAudio = null;
+    public AudioSource smashAudio  = null;
 
     public int maxHealth = 9;
     public int health = 9; //current health
@@ -83,5 +88,25 @@ public class Player : MonoBehaviour, IDropHandler
             else
                 manaBalls[i].SetActive(false);
         }
+    }
+
+    internal void PlayDealSound()
+    {
+        dealAudio.Play();
+    }
+
+    internal void PlayHealSound()
+    {
+        healAudio.Play();
+    }
+
+    internal void PlayMirrorSound()
+    {
+        mirrorAudio.Play();
+    }
+
+    internal void PlaySmashSound()
+    {
+        smashAudio.Play();
     }
 }
