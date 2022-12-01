@@ -9,7 +9,8 @@ public class CardData : ScriptableObject
     { 
         Fire,
         Ice,
-        Both
+        Both,
+        Destruct
     }
 
     public string cardTitle;
@@ -26,4 +27,5 @@ public class CardData : ScriptableObject
     public bool isDefenseCard = false;
     public bool isMirrorCard = false;
     public bool isMultiCard = false;
+    public bool isDestructCard = false;
 }

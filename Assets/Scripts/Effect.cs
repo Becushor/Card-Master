@@ -11,6 +11,7 @@ public class Effect : MonoBehaviour
 
     public AudioSource iceAudio  = null;
     public AudioSource fireAudio = null;
+    public AudioSource destructAudio = null;
 
     public void EndTrigger()
     {
@@ -71,5 +72,10 @@ public class Effect : MonoBehaviour
     internal void PlayFireSound()
     {
         fireAudio.Play();
+    }
+
+    internal void PlayDestructSound()
+    {
+        destructAudio.Play();
     }
 }

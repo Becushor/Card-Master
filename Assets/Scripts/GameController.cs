@@ -26,6 +26,7 @@ public class GameController : MonoBehaviour
 
     public Sprite fireBallImage = null;
     public Sprite iceBallImage  = null;
+    public Sprite destructImage = null;
     public Sprite multiFireBallImage = null;
     public Sprite multiIceBallImage  = null;
     public Sprite fireAndIceBallImage = null;
@@ -219,6 +220,10 @@ public class GameController : MonoBehaviour
                     effect.PlayFireSound();
                     effect.PlayIceSound();
                     break;
+                case CardData.DamageType.Destruct:
+                    effect.effectImage.sprite = destructImage;
+                    effect.PlayDestructSound();
+                    break;
             }
         }
     }
@@ -291,9 +296,13 @@ public class GameController : MonoBehaviour
         {
             if (player.mana < 5)
                 player.mana++;
+
+            isPlayable = true;
         }
         else
         {
+            isPlayable = false;
+
             if (enemy.health > 0)
             {
                 if (enemy.mana < 5)

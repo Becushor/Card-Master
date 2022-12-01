@@ -18,7 +18,7 @@ public class Player : MonoBehaviour, IDropHandler
 
     public int maxHealth = 9;
     public int health = 9; //current health
-    public int mana = 3;
+    public int mana = 1;
 
     public bool isPlayer;
     public bool isFire; //whether is a fire element monster or not
